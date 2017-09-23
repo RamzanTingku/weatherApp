@@ -69,8 +69,8 @@ public class CityActivity extends SampleActivityBase implements PlaceSelectionLi
         // occurred.
         autocompleteFragment.setOnPlaceSelectedListener(this);
 
-        mPlaceDetailsText = (TextView) findViewById(R.id.place_details);
-        mPlaceAttribution = (TextView) findViewById(R.id.place_attribution);
+       /* mPlaceDetailsText = (TextView) findViewById(R.id.place_details);
+        mPlaceAttribution = (TextView) findViewById(R.id.place_attribution);*/
 
 
 
