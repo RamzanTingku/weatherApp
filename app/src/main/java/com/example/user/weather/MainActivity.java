@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 day4low=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(5).getLow();
 
                 day0Condition =response.body().getQuery().getResults().getChannel().getItem().getForecast().get(2).getCode() ;
-                Toast.makeText(MainActivity.this,response.body().getQuery().getResults().getChannel().getItem().getForecast().get(1).getText() , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,response.body().getQuery().getResults().getChannel().getItem().getForecast().get(1).getText() , Toast.LENGTH_SHORT).show();
                 day1Condition =response.body().getQuery().getResults().getChannel().getItem().getForecast().get(2).getCode() ;
                 day2Condition =response.body().getQuery().getResults().getChannel().getItem().getForecast().get(3).getCode() ;
                 day3Condition =response.body().getQuery().getResults().getChannel().getItem().getForecast().get(4).getCode() ;
@@ -386,12 +386,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         LatLog_interface.Factory.getInstance().getWeather().enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                Toast.makeText(getApplication(),response.body().getQuery().getResults().getChannel().getLocation().getCity(),Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplication(),response.body().getQuery().getResults().getChannel().getLocation().getCity(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
-             Toast.makeText(getApplication(),"Errr",Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplication(),"Errr",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -431,8 +431,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         day4lowt.setText(FtoC(day4low));
                         day4TempUnitT.setText(SFtoC(crntTempUnit));
 
-
-
                         break;
 
                     case 1:
@@ -471,12 +469,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView myText = (TextView) view;
-        Toast.makeText(this,"You Selected "+myText.getText(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"You Selected "+myText.getText(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        Toast.makeText(getApplicationContext(), "You selected Nothing", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "You selected Nothing", Toast.LENGTH_SHORT).show();
     }
 
     public void onRefresh() {

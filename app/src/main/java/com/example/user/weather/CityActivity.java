@@ -130,8 +130,8 @@ public class CityActivity extends SampleActivityBase implements PlaceSelectionLi
     @Override
     public void onError(Status status) {
 
-        Toast.makeText(this, "Place selection failed: " + status.getStatusMessage(),
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Place selection failed: " + status.getStatusMessage(),
+           //     Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -170,7 +170,7 @@ public class CityActivity extends SampleActivityBase implements PlaceSelectionLi
                 mDbHelper = new Ddl(dcontext);
                 CityDml cityDml2=new CityDml(dcontext);
                 cityDml2.insertData(city,"demu",lot,log);
-                Toast.makeText(getApplication(),response.body().getResult().getName(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplication(),response.body().getResult().getName(),Toast.LENGTH_LONG).show();
             }
 
             @Override
