@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     AlertDialog alertDialog1;
     CharSequence[] values = {"Celsius","Fahrenheit"};
 
-    public String day0Condition,day1Condition,day2Condition,day3Condition,day4Condition,currentCondition,currentTemp,crntTempUnit,lastUpdate,detailsText, minTemp,maxTemp,avgTemp,humidity,pressure,visivility,uv,wind,windDir, currentConditionText,sunrise,sunset,location,time,feelTmp,day0,day0date,day0high,day0low,
+
+    public String  rising,risingNormal,risingDown,risingUp,day0Condition,day1Condition,day2Condition,day3Condition,day4Condition,currentCondition,currentTemp,crntTempUnit,lastUpdate,detailsText, minTemp,maxTemp,avgTemp,humidity,pressure,visivility,uv,wind,windDir, currentConditionText,sunrise,sunset,location,time,feelTmp,day0,day0date,day0high,day0low,
             day1,day1date,day1high,day1low,day2,day2date,day2high,day2low,day3,day3date,day3high,day3low,day4,day4date,day4high,day4low;
     TextView crntTempUnitT,crntTempRangeUnitT,day0TempUnitT,day1TempUnitT,day2TempUnitT,day3TempUnitT,day4TempUnitT, lastUpdateT,detailsTextT,  minTempt,maxTempt,avgTempt,humidityt,pressuret,visivilityt,uvt,windt,windDirt,wConditiontt,sunriset,sunsett,locationt,timet,feelTmpt,day0t,day0datet,day0hight,day0lowt,
             day1t,day1datet,day1hight,day1lowt,day2t,day2datet,day2hight,day2lowt,day3t,day3datet,day3hight,day3lowt,day4t,day4datet,day4hight,day4lowt;
@@ -87,36 +88,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         yahooLatLong();
 
 
-/*
-
-          dayWeathers=new ArrayList<>();
-        dayWeathers.add(new DayWeather("1:00 am","28*",1));
-        dayWeathers.add(new DayWeather("2:00 am","27*",1));
-        dayWeathers.add(new DayWeather("3:00 am","29*",1));
-        dayWeathers.add(new DayWeather("4:00 am","31*",1));
-        dayWeathers.add(new DayWeather("5:00 am","28*",1));
-        dayWeathers.add(new DayWeather("1:00 am","28*",1));
-        dayWeathers.add(new DayWeather("2:00 am","27*",1));
-        dayWeathers.add(new DayWeather("3:00 am","29*",1));
-        dayWeathers.add(new DayWeather("4:00 am","31*",1));
-        dayWeathers.add(new DayWeather("5:00 am","28*",1));
-
-
-        // TODO-2: Create object of LayoutManager
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-        // TODO-3: Create object of ContactRecyclerAdapter //
-        dayWeatherAdapter=new DayWeatherAdapter(this,dayWeathers);
-
-
-        // TODO-4: Setting LayoutManager and Adapter to RecyclerView of activity_main.xml//
-        contactRecyclerView = (RecyclerView) findViewById(R.id.dTimelyWeatherLv);
-        contactRecyclerView.setLayoutManager(llm);
-        contactRecyclerView.setAdapter(dayWeatherAdapter);
-*/
-
-
 
         //location spinner property
 
@@ -141,9 +112,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onResponse(Call<Yweather> call, Response<Yweather> response) {
 
 
-                /*detailsText = response.body().getQuery().getResults().getChannel().getItem().getDescription();
+                detailsText =response.body().getQuery().getResults().getChannel().getAtmosphere().getRising();
                 detailsTextT = (TextView) findViewById(R.id.details_text);
-                detailsTextT.setText(detailsText);*/
+                detailsTextT.setText(detailsText);
 
 
                /* ImageView testImg = (ImageView) findViewById(R.id.details_img);
@@ -160,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 minTemp=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(0).getLow();
                 humidity=response.body().getQuery().getResults().getChannel().getAtmosphere().getHumidity();
                 pressure=response.body().getQuery().getResults().getChannel().getAtmosphere().getPressure();
+                rising = response.body().getQuery().getResults().getChannel().getAtmosphere().getRising();
                 wind=response.body().getQuery().getResults().getChannel().getWind().getSpeed();
                 windDir=response.body().getQuery().getResults().getChannel().getWind().getDirection();
                 visivility=response.body().getQuery().getResults().getChannel().getAtmosphere().getVisibility();
@@ -170,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 currentCondition =response.body().getQuery().getResults().getChannel().getItem().getCondition().getCode();
                 lastUpdate = response.body().getQuery().getResults().getChannel().getLastBuildDate();
 
-                day0=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(1).getDay();
+                day0=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(0).getDay();
                 day1=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(2).getDay();
                 day2=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(3).getDay();
                 day3=response.body().getQuery().getResults().getChannel().getItem().getForecast().get(4).getDay();
@@ -221,11 +193,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 humidityt.setText(humidity);
                 pressuret=(TextView)findViewById(R.id.pressure);
                 pressuret.setText(pressure);
+
+                ImageView risingImageView = (ImageView) findViewById(R.id.pressure_rising);
+                if (rising == "2"){
+                    risingImageView.setImageResource(R.drawable.down_arrow);
+                }else if(rising == "1"){
+                    risingImageView.setImageResource(R.drawable.up_arrow);
+                }
+
                 visivilityt=(TextView)findViewById(R.id.visibility);
                 visivilityt.setText(visivility);
                 windt=(TextView)findViewById(R.id.speed);
                 windt.setText(wind);
-                windDirt=(TextView)findViewById(R.id.tv_speed_direction);
+                windDirt=(TextView)findViewById(R.id.wind_direction);
                 windDirt.setText(windDir);
                 sunriset=(TextView)findViewById(R.id.sunrise);
                 sunriset.setText(sunrise);

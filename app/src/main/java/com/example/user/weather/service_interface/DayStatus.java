@@ -18,7 +18,7 @@ double Latitude=40.741895;
    //String query2= "select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="(latitude,longitude)")
    //String url = "select%20woeid%20from%20geo.places%20where%20text%3D%22(" + Latitude + "," + Longitude + ")%22%20limit%201&diagnostics=false";
 
-    String city = "Dhaka";
+    String city = "dhaka";
     String query = "select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+ city +"%22)&format=json";
 
     String BASE_URL = "https://query.yahooapis.com/v1/public/";
