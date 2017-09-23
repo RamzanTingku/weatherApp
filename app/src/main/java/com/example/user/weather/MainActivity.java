@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onResponse(Call<Yweather> call, Response<Yweather> response) {
 
 
-                detailsText =response.body().getQuery().getResults().getChannel().getAtmosphere().getRising();
+                /*detailsText =response.body().getQuery().getResults().getChannel().getAtmosphere().getRising();
                 detailsTextT = (TextView) findViewById(R.id.details_text);
                 detailsTextT.setText(detailsText);
-
+*/
 
                /* ImageView testImg = (ImageView) findViewById(R.id.details_img);
                 UrlImageViewHelper.setUrlDrawable(testImg,detailsText);*/
